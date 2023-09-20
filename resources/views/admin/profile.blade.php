@@ -5,7 +5,7 @@
         <div class="container-fluid">
             <div class="card">
                 <img class="card-img-top rounded rounded-circle m-3" style="width: 120px; height: 120px"
-                    src="{{ asset('profileImg/' . $user->image) }}" alt="Card image cap">
+                    src="{{ !empty($user->image)?asset('profileImg/' . $user->image):asset('profileImg/no-image.png') }}" alt="Card image cap">
                 <div class="card-body">
                     <h2 class="">Name: {{ $user->name }} </h2>
                     <hr>

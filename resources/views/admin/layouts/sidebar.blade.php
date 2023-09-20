@@ -5,7 +5,7 @@
         <!-- User details -->
         <div class="user-profile text-center mt-3">
             <div class="">
-                <img src="{{ asset('profileImg/'.$user->image ) }}" alt="" class="avatar-md rounded-circle">
+                <img src="{{ !empty($user->image)?asset('profileImg/' . $user->image):asset('profileImg/no-image.png')}}" alt="" class="avatar-md rounded-circle">
             </div>
             <div class="mt-3">
                 <h4 class="font-size-16 mb-1">Julia Hudda</h4>

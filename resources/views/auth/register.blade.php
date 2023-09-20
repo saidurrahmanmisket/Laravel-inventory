@@ -29,13 +29,24 @@
         <div class="container-fluid p-0">
             <div class="card">
                 <div class="card-body">
+                    {{-- error message  --}}
+                    @if (count($errors))
+                        @foreach ($errors->all() as $error)
+                            <div class="alert alert-danger alert-dismissible fade show" role="alert">
+                                {{ $error }}
+                                <button type="button" class="btn-close" data-bs-dismiss="alert"
+                                    aria-label="Close"></button>
+                            </div>
+                        @endforeach
+                    @endif
+
 
                     <div class="text-center mt-4">
                         <div class="mb-3">
-                            <a href="index.html" class="auth-logo">
-                                <img src="assets/images/logo-dark.png" height="30" class="logo-dark mx-auto"
+                            <a href="/" class="auth-logo">
+                                <img src="{{  !empty($user->image)?asset('profileImg/' . $user->image):asset('backend/assets/images/logo-dark.png') }}" height="30" class="logo-dark mx-auto"
                                     alt="">
-                                <img src="assets/images/logo-light.png" height="30" class="logo-light mx-auto"
+                                <img src="{{ !empty($user->image)?asset('profileImg/' . $user->image):asset('backend/assets/images/logo-dark.png') }}" height="30" class="logo-light mx-auto"
                                     alt="">
                             </a>
                         </div>
@@ -44,28 +55,32 @@
                     <h4 class="text-muted text-center font-size-18"><b>Register</b></h4>
 
                     <div class="p-3">
-                            <form class="form-horizontal mt-3" method="POST" action="{{ route('register') }}">
-                                @csrf
+                        <form class="form-horizontal mt-3" method="POST" action="{{ route('register') }}">
+                            @csrf
                             <div class="form-group mb-3 row">
                                 <div class="col-12">
-                                    <input class="form-control" name="name" type="text" required=""  placeholder="Name">
-                                </div>
-                            </div>
-                            
-                            <div class="form-group mb-3 row">
-                                <div class="col-12">
-                                    <input class="form-control" type="email" required="" name="email" placeholder="Email">
+                                    <input class="form-control" name="name" type="text" required=""
+                                        placeholder="Name">
                                 </div>
                             </div>
 
                             <div class="form-group mb-3 row">
                                 <div class="col-12">
-                                    <input class="form-control" type="password" name="password" required="" placeholder="Password">
+                                    <input class="form-control" type="email" required="" name="email"
+                                        placeholder="Email">
+                                </div>
+                            </div>
+
+                            <div class="form-group mb-3 row">
+                                <div class="col-12">
+                                    <input class="form-control" type="password" name="password" required=""
+                                        placeholder="Password">
                                 </div>
                             </div>
                             <div class="form-group mb-3 row">
                                 <div class="col-12">
-                                    <input class="form-control" type="password" name="password_confirmation" required="" placeholder="Confirm Password">
+                                    <input class="form-control" type="password" name="password_confirmation"
+                                        required="" placeholder="Confirm Password">
                                 </div>
                             </div>
 
@@ -78,7 +93,7 @@
 
                             <div class="form-group mt-2 mb-0 row">
                                 <div class="col-12 mt-3 text-center">
-                                    <a  href="{{ route('login') }}" class="text-muted">Already have account?</a>
+                                    <a href="{{ route('login') }}" class="text-muted">Already have account?</a>
                                 </div>
                             </div>
                         </form>
@@ -94,14 +109,14 @@
     <!-- end -->
 
 
-   <!-- JAVASCRIPT -->
-   <script src="{{ asset('backend/assets/libs/jquery/jquery.min.js') }}"></script>
-   <script src="{{ asset('backend/assets/libs/bootstrap/js/bootstrap.bundle.min.js') }}"></script>
-   <script src="{{ asset('backend/assets/libs/metismenu/metisMenu.min.js') }}"></script>
-   <script src="{{ asset('backend/assets/libs/simplebar/simplebar.min.js') }}"></script>
-   <script src="{{ asset('backend/assets/libs/node-waves/waves.min.js') }}"></script>
+    <!-- JAVASCRIPT -->
+    <script src="{{ asset('backend/assets/libs/jquery/jquery.min.js') }}"></script>
+    <script src="{{ asset('backend/assets/libs/bootstrap/js/bootstrap.bundle.min.js') }}"></script>
+    <script src="{{ asset('backend/assets/libs/metismenu/metisMenu.min.js') }}"></script>
+    <script src="{{ asset('backend/assets/libs/simplebar/simplebar.min.js') }}"></script>
+    <script src="{{ asset('backend/assets/libs/node-waves/waves.min.js') }}"></script>
 
-   <script src="{{ asset('backend/assets/js/app.js') }}"></script>
+    <script src="{{ asset('backend/assets/js/app.js') }}"></script>
 
 </body>
 

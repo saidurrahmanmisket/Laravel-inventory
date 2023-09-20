@@ -33,7 +33,7 @@ class AdminController extends Controller
     public function editProfile()
     {
         $user = User::find(Auth::user()->id);
-        return view('admin.layouts.editProfile', compact('user'));
+        return view('admin.editProfile', compact('user'));
     }
 
 

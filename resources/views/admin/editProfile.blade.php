@@ -49,7 +49,7 @@
                                         id="image">
                                     <div class="mt-3">
                                         <img id="imgPreview" class="image-fluid" style="width: 120px; height: 120px"
-                                            src="{{ asset('profileImg/'.$user->image ) }}" alt="">
+                                            src="{{  !empty($user->image)?asset('profileImg/' . $user->image):asset('profileImg/no-image.png')}}" alt="">
                                     </div>
                                 </div>
                             </div>

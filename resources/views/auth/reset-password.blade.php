@@ -29,13 +29,23 @@
         <div class="container-fluid p-0">
             <div class="card">
                 <div class="card-body">
+                     {{-- error message  --}}
+
+                     @if (count($errors))
+                     @foreach ($errors->all() as $error)
+                     <div class="alert alert-danger alert-dismissible fade show" role="alert">
+                         {{ $error }}
+                         <button type="button" class="btn-close" data-bs-dismiss="alert" aria-label="Close"></button>
+                     </div>
+                     @endforeach
+                 @endif
 
                     <div class="text-center mt-4">
                         <div class="mb-3">
-                            <a href="index.html" class="auth-logo">
-                                <img src="assets/images/logo-dark.png" height="30" class="logo-dark mx-auto"
+                            <a href="/" class="auth-logo">
+                                <img src="{{  !empty($user->image)?asset('profileImg/' . $user->image):asset('backend/assets/images/logo-dark.png') }}" height="30" class="logo-dark mx-auto"
                                     alt="">
-                                <img src="assets/images/logo-light.png" height="30" class="logo-light mx-auto"
+                                <img src="{{ !empty($user->image)?asset('profileImg/' . $user->image):asset('backend/assets/images/logo-dark.png') }}" height="30" class="logo-light mx-auto"
                                     alt="">
                             </a>
                         </div>
